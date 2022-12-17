@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>Music</title>
+        <script>
+            // TODO: Add code to check answers to questions
+
+            // Run script once DOM is loaded
+            document.addEventListener('DOMContentLoaded', function()
+            {
+
+                let songs_button = document.querySelector('#song');
+
+                songs_button.addEventListener('click', function()
+                {
+                    document.querySelector('#songs_list').style.visibility = "visible";
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        <div class="alert alert-primary" role="alert">
+              Listening Music
+        </div>
+        <button id="song">To see my favourite songs, You may click here</button>
+
+        <ol id="songs_list" class = "item_list">
+          <li><a href = "https://www.youtube.com/watch?v=nMEHJPuggHQ&ab_channel=LondonGrammar">London Grammar - Hey Now</a></li>
+          <li><a href = "https://www.youtube.com/watch?v=1lyu1KKwC74&ab_channel=TheVerveVEVO">The Verve - Bitter Sweet Symphony</a></li>
+          <li><a href = "https://www.youtube.com/watch?v=vCHREyE5GzQ&ab_channel=neuIlaryRheinKlange">Beethoven - Symphony No.7 in A major op.92 - II, Allegretto</a></li>
+          <li><a href = "https://www.youtube.com/watch?v=TZCfydWF48c&ab_channel=avrilfan2213">Antonio Vivaldi - Winter (Full) - The Four Seasons</a></li>
+          <li><a href = "https://www.youtube.com/watch?v=V8goep7fVXk&ab_channel=LoscarFunkinho">Antonio Carlos Jobim - Brazil</a></li>
+        </ol>
+
+    </body>
+</html>

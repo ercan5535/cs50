@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>Reading</title>
+        <script>
+            // TODO: Add code to check answers to questions
+
+            // Run script once DOM is loaded
+            document.addEventListener('DOMContentLoaded', function()
+            {
+
+                let book_button = document.querySelector('#book');
+
+                book_button.addEventListener('click', function()
+                {
+                    document.querySelector('#book_list').style.visibility = "visible";
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        <div class="alert alert-primary" role="alert">
+              Reading
+        </div>
+        <button id="book">To see my favourite books, You may click here</button>
+
+        <ol id="book_list" class = "item_list">
+          <li><a href = "https://www.amazon.com.tr/Art-Loving-Erich-Fromm/dp/0061129739">The Art of Loving (P.S.) - Erich Fromm</a></li>
+          <li><a href = "https://www.amazon.com/Emotional-Intelligence-Matter-More-Than/dp/055338371X">Emotional Intelligence: Why It Can Matter More Than IQ - Daniel Goleman</a></li>
+          <li><a href = "https://www.amazon.com/Meditations-Marcus-Aurelius/dp/1503280462">Meditations - Marcus Aurelius</a></li>
+          <li><a href = "https://www.amazon.com.tr/Siddhartha-Hermann-Hesse/dp/1613827687">Siddhartha - Hermann Hesse</a></li>
+          <li><a href = "https://www.amazon.com.tr/Sapiens-Yuval-Noah-Harari/dp/0099590085">Sapiens: A Brief History of Humankind - Yuval Noah Harari</a></li>
+        </ol>
+
+    </body>
+</html>

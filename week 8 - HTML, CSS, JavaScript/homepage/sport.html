@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>Sport</title>
+        <script>
+            // TODO: Add code to check answers to questions
+
+            // Run script once DOM is loaded
+            document.addEventListener('DOMContentLoaded', function()
+            {
+
+                let channels_button = document.querySelector('#channels');
+
+                channels_button.addEventListener('click', function()
+                {
+                    document.querySelector('#channel_list').style.visibility = "visible";
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        <div class="alert alert-primary" role="alert">
+              Sport
+        </div>
+        <button id="channels">To see my favourite youtube channels about sport, You may click here</button>
+
+        <ol id="channel_list" class = "item_list">
+          <li><a href = "https://www.youtube.com/user/Calisthenicmovement">Calisthenicmovement</a></li>
+          <li><a href = "https://www.youtube.com/user/FitnessFAQs">FitnessFAQs</a></li>
+          <li><a href = "https://www.youtube.com/results?search_query=madfit">MadFit</a></li>
+          <li><a href = "https://www.youtube.com/c/CharlesGlassgob">Charles Glass</a></li>
+          <li><a href = "https://www.youtube.com/c/OFFICIALTHENXSTUDIOS">THENX</a></li>
+        </ol>
+
+    </body>
+</html>

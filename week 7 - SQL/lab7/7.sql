@@ -1,0 +1,1 @@
+SELECT avg(energy) FROM songs JOIN artists WHERE songs.artist_id = artists.id AND artists.name = "Drake"

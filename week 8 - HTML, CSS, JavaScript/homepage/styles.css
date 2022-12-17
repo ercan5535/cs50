@@ -1,0 +1,9 @@
+img.image-style {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+}
+
+.item_list {
+    visibility: hidden;
+}

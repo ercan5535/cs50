@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- TODO: Loop through the database entries to display them in this table -->
+            {% for stock in stocks %}
+            <tr>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.shares }}</td>
+                <td>{{ usd_function(stock.stock_price) }}</td>
+                {% if stock.shares < 0 %}
+                    <td>{{ usd_function(-1 * stock.shares * stock.stock_price) }}</td>
+                {% else %}
+                    <td>{{ usd_function(stock.shares * stock.stock_price) }}</td>
+                {% endif %}
+                <td>{{ stock.date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
