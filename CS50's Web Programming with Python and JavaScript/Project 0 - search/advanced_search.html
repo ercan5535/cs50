@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div>
+            <ul class="navbar">
+                <li class="navbar-item"><a href="images.html">Images</a></li>
+                <li class="navbar-item"><a href="index.html">Google</a></li>
+            </ul>
+        </div>
+
+        <p class="title">Advanced Search</p>
+
+        <div class="h-line"></div>
+
+        <p class="sub-title">Find pages with...</p>
+
+        <form action="https://google.com/search">
+            <div class="row-input">
+                <div class="input-text">
+                    <p>all these words:</p>    
+                </div>
+                <div class="input-box">
+                    <input type="text" name="as_q" class="form-input">
+                </div>
+            </div>
+
+            <div class="row-input">
+                <div class="input-text">
+                    <p>this exact word or phrase:</p>    
+                </div>
+                <div class="input-box">
+                    <input type="text" name="as_epq" class="form-input">
+                </div>
+            </div>
+
+            <div class="row-input">
+                <div class="input-text">
+                    <p>any of these words:</p>    
+                </div>
+                <div class="input-box">
+                    <input type="text" name="as_oq" class="form-input">
+                </div>
+            </div>
+
+            <div class="row-input">
+                <div class="input-text">
+                    <p>none of these words:</p>    
+                </div>
+                <div class="input-box">
+                    <input type="text" name="as_eq" class="form-input">
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: flex-end; width: 627px;">
+                <input type="submit" value="Advanced Search" class="advanced-button">
+            </div>
+            
+        </form>
+    </body>
+</html>

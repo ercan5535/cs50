@@ -1,0 +1,69 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <h1>All Posts</h1>
+    <ul class="list-group">
+        {% if user.is_authenticated %}
+            <li class="list-group-item">
+                <h2>New Post</h2>
+                <form action="{% url 'new_post' %}" method="post">
+                    {% csrf_token %}
+                    <textarea name="content" style="width: 70%;">Enter your post here</textarea>
+                    </br>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </form>
+            </li>
+        {% endif %}
+        {% for post in all_posts %}
+        <li class="list-group-item">
+            <a href="{% url 'profile_page' username=post.author %}"><h3>{{ post.author }}</h3></a>
+            <h5 id="post_content_{{post.id}}">{{ post.content }}</h5>
+            <h6 style="color: gray;">{{ post.timestamp }}</h6>
+            {% if user.is_authenticated %}
+                {% if user == post.author %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_id_{{post.id}}">Edit</button>
+                    <div class="modal" id="modal_id_{{post.id}}" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title">Edit Post</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <textarea id="text_area_{{post.id}}"class="form-control" style="width: 100%;" name="content_edit">{{ post.content }}</textarea>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="submit_edit_content({{post.id}})">Save changes</button>
+                            {% csrf_token %}
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                {% else %}
+                    {% if post in user_liked_posts %}
+                    <button class="btn btn-info fa fa-thumbs-down col-1" onclick="unlike_post({{post.id}})" id="like_id_{{post.id}}"></button>
+                    {% else %}
+                    <button class="btn btn-info fa fa-thumbs-up col-1" onclick="like_post({{post.id}})" id="like_id_{{post.id}}"></button>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            <h6>Likes:</h6>
+            <h6>Comment</h6>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if all_posts.has_previous %}    
+            <li class="page-item"><a class="page-link" href="?page={{ all_posts.previous_page_number }}">Previous</a></li>
+            {% endif %}
+            {% if all_posts.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ all_posts.next_page_number }}">Next</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}

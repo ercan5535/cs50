@@ -1,0 +1,67 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        {% if user == listing.owner and  listing.isActive%}
+        <form action="{% url 'close_listing' id=listing.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Close Auction</button>
+        </form>
+        {% endif %}
+        {% if user == listing.winner %}
+        <h6>You won!</h6>
+        {% endif %}
+        {% if isListingInWatchlist %}
+        <form action="{% url 'remove_watchlist' id=listing.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Remove from Watchlist</button>
+        </form>
+        {% else %}
+        <form action="{% url 'add_watchlist' id=listing.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Add to Watchlist</button>
+        </form>
+        {% endif %}
+    {% endif %}
+
+
+    <h2>{{ listing.title }}</h2>
+    <img src="{{ listing.imageUrl }}" alt="{{ listing.title }}" height="400">
+    <p>{{ listing.description }}</p>
+    <h6>Owner: {{ listing.owner }}</h6>
+    <h6>Initial Price: {{ listing.initial_price }}</h6>
+    {% if listing.bid_count > 0 %}
+        <h6>Last Bid Amount: {{ listing.current_amount }}</h6>
+        <h6>Number of Bids: {{ listing.bid_count }}</h6>
+    {% else %}
+        <h6>There is no Bid, yet</h6>
+    {% endif %}
+    {% if user.is_authenticated %}
+        {% if not user == listing.owner and listing.isActive%}
+        <h6>Bid</h6>
+        <form action="{% url 'make_bid' id=listing.id %}" method="POST">
+            {% csrf_token %}
+            <input type="number" name="bid_amount" min="0" placeholder="Enter Bid Amount">
+            <button type="submit">Make Bid</button>
+        </form>
+        {% endif %}
+
+    <h6>Add comment</h6>
+    <form action="{% url 'add_comment' id=listing.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="comment_message" placeholder="Enter your comment here">
+        <button type="submit">Add Comment</button>
+    </form>
+    {% endif %}
+    <h6>Comments:</h6>
+    <ul class="list-group">
+        {% for comment in comments %}
+        <li class="list-group-item">
+            {{ comment.message }}
+            </br>
+            <p>Posted by <strong>{{ comment.author }}</strong></p>
+
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
